@@ -26,7 +26,8 @@ public class Server {
 			OutputStream outToServer = client.getOutputStream();
 			DataOutputStream out = new DataOutputStream(outToServer);
 			
-			out.writeUTF(msg);
+			out.write(msg.getBytes());
+//			out.writeUTF(msg);
 			
 			outToServer.close();
 			out.close();
