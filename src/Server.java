@@ -12,25 +12,25 @@ public class Server {
 
 		System.out.print("Enter Server IP Address to Connect ::" );
 		String host = s1.next();
-		
+
 		System.out.print("Enter Message to Send ::" );
 		String msg = s1.next();
 		s1.close();
 
 		try{
 			System.out.println("Connecting to " + host + " on port " + port);
-			
+
 			Socket client = new Socket(host, port);
 			System.out.println("Just connected to "+ client.getRemoteSocketAddress());
-			
+
 			OutputStream outToServer = client.getOutputStream();
-			DataOutputStream out = new DataOutputStream(outToServer);
-			
-			out.write(msg.getBytes());
-//			out.writeUTF(msg);
-			
+			//DataOutputStream out = new DataOutputStream(outToServer);
+
+			outToServer.write(msg.getBytes());
+   //				out.writeUTF(msg);
+
 			outToServer.close();
-			out.close();
+			//out.close();
 			client.close();
 		}catch(IOException e){
 			e.printStackTrace();
